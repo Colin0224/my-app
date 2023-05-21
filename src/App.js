@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 function App() {
+  const [message, setMessage] = useState('');
+  const [response,setResponse] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const res = await axios.post('/chat', { message });
+    setResponse(res.data);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Enter your message"
+        />
+        <button type="submit">Send</button>
+      </form>
+      {response && <p>{response}</p>}
     </div>
   );
 }
