@@ -8,14 +8,14 @@ function App() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const res = await axios.post('http://localhost:5000/chat', { message });
+    const res = await axios.post('https://totalenglish.vercel.app/', { message });
     setResponse(res.data);
   };
 
   return (
     <div className="app">
       <h1>Welcome to Salary Predictor</h1>
-      <p>Salary Predictor is an AI-powered tool designed to demonstrate the power of AI, tools and better map the future montetary prospects of college students. </p>
+      <p>Salary Predizctor is an AI-powered tool designed to demonstrate the power of AI, tools and better map the future montetary prospects of college students. </p>
       <p>Enter your attributes below to get started! (Ex: "Computer Science Major, Asian, 6 Feet, CMU")</p>
       <p>Results may not be satisfactory however simply resubmit if prediction is not offered.</p>
       
